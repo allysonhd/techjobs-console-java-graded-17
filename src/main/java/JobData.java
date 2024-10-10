@@ -35,7 +35,7 @@ public class JobData {
         ArrayList<String> values = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-            String aValue = row.get(field);
+            String aValue = row.get(field).toLowerCase();
 
             if (!values.contains(aValue)) {
                 values.add(aValue);
@@ -73,7 +73,7 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toLowerCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
@@ -95,7 +95,23 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+        // TODO - Search all columns for user input value
+        // return list of all jobs that contain that value
+        // google how to grab the keyset from a hash map java
+        // learn how to use debugger in intellij
+
+        ArrayList<HashMap<String, String>> listings = new ArrayList<>();
+        for (HashMap<String, String> job : allJobs) {
+            //TODO - get a set of keys.
+            // Loop through each key to check the field(value) against the value(user input search term)
+            for (String column : job.keySet()) {
+                String aListing = job.get(column).toLowerCase();
+                if (aListing.contains(value)) {
+                    listings.add(job);
+                }
+            }
+        }
+        return listings;
     }
 
     /**
