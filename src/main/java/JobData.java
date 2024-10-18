@@ -108,6 +108,7 @@ public class JobData {
                 String aListing = job.get(column).toLowerCase();
                 if (aListing.contains(value)) {
                     listings.add(job);
+                    break;
                 }
             }
         }
